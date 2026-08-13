@@ -6,13 +6,14 @@ namespace mf_api_web_services_fuel_manager.Models
     [Table("consumo")]
     public class Consumo
     {
-        [key]
+        [Key]
         public int Id { get; set;  }
         [Required]
         public string Descricao { get; set; }
         [Required]
         public DateTime Data { get; set; }
         [Required]
+        [Column(TypeName = "decimal(10,2)")]
         public decimal Valor { get; set; }
         [Required]
         public TipoCombustivel Tipo { get; set; }

@@ -8,20 +8,22 @@ namespace mf_api_web_services_fuel_manager.Models
     {
         [Key]
         public int Id { get; set; }
+
         [Required]
         public string Marca { get; set; }
+
         [Required]
         public string Modelo { get; set; }
-        [Required]
 
+        [Required]
         public string Placa { get; set; }
+
         [Required]
         public int AnoFabricacao { get; set; }
+
         [Required]
+        public int AnoModelo { get; set; }
 
-        public  int  AnoModelo { get; set; }
-
-        public ICollection<consumo> consumos { get; set; }
-
+        public ICollection<Consumo> Consumos { get; set; }
     }
 }
