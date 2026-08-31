@@ -4,7 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace mf_api_web_services_fuel_manager.Models
 {
     [Table("consumo")]
-    public class Consumo
+    public class Consumo : LinkHATEOS
+    {
     {
         [Key]
         public int Id { get; set;  }

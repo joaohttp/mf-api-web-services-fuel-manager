@@ -19,6 +19,8 @@ namespace mf_api_web_services_fuel_manager.Controllers
         public async Task<ActionResult> GetAll()
         {
             var model = await _context.veiculos.ToListAsync();
+            
+            
             return Ok(model);
         }
 
@@ -47,6 +49,7 @@ namespace mf_api_web_services_fuel_manager.Controllers
                 return NotFound();
             }
 
+            gerar Links(model);
             return Ok(model);
         }
 
@@ -89,6 +92,12 @@ namespace mf_api_web_services_fuel_manager.Controllers
             await _context.SaveChangesAsync();
 
             return NoContent();
+        }
+        private void gerar links(Veiculo veiculo)
+        {
+            veiculo.Links.Add(new LinkDto(veiculo.Id, Url.Action(nameof(GetById), new { id = veiculo.Id }), "self", "GET"));
+            veiculo.Links.Add(new LinkDto(veiculo.Id, Url.Action(nameof(Update), new { id = veiculo.Id }), "update_veiculo", "PUT"));
+            veiculo.Links.Add(new LinkDto(veiculo.Id, Url.Action(nameof(Delete), new { id = veiculo.Id }), "delete_veiculo", "DELETE"));
         }
     }
 }
